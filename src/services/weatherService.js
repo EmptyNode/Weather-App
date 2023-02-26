@@ -1,6 +1,7 @@
 import { DateTime } from "luxon";
 const API_KEY = process.env.REACT_APP_API_KEY;
 const BASE_URL = "https://api.openweathermap.org/data/2.5";
+console.log(API_KEY);
 
 
 //by city name api url → https://api.openweathermap.org/data/2.5/weather?q={Kolkata}&appid={7aa3c6b386b8b646e8b359a0ff7e3396}
