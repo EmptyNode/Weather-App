@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import { UilSearch, UilLocationPoint } from '@iconscout/react-unicons'
 import { toast } from 'react-toastify';
 
@@ -7,10 +7,9 @@ function Inputs({setQuery, units, setUnits}) {
 
     const handleSearchClick = () =>{
       if(city!==""){
-        setQuery({q: city})
+        setQuery({q: city});
       }
     }
-
     const handleLocationClick = () =>{
       if(navigator.geolocation){
         toast.info(`Fetching users location.`)
@@ -39,6 +38,13 @@ function Inputs({setQuery, units, setUnits}) {
         <input 
           value={city}
           onChange={(e) => setCity(e.currentTarget.value)}
+
+          onKeyPress={e => {
+            if (e.key === 'Enter') {
+              handleSearchClick();
+            }
+          }}
+
           type="text"
           placeholder='search for city....'
           className= "text-xl font-light p-2 w-full shadow-xl focus:outline-none capitalize placeholder:lowercase"
